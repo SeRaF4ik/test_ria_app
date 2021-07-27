@@ -1,0 +1,26 @@
+.mark_card {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 50%;
+  margin-left: 25%;
+  padding: 5px;
+  margin-top: 15px;
+
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  select {
+    width: 80%;
+    margin-left: 10%;
+    height: 25px;
+    margin-bottom: 15px;
+
+    &#states {
+      height: 40px;
+    }
+  }
+}

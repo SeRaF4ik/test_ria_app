@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+
+import Filter from "./components/filter/Filter";
+
+import "./App.css";
 
 function App() {
+  const fetchRia = () => {
+    fetch(
+      "https://developers.ria.com/auto/categories/1/marks?api_key=CSZCqn3KA6mjPoYwZtA3AgQBaDa3PJ7ga9fjODMH"
+    )
+      .then((response) => response.json())
+      .then((json) => console.log(json[106]));
+  };
+
+  //category_id=1
+
+  useEffect(() => {
+    //fetchRia();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Filter />
     </div>
   );
 }
