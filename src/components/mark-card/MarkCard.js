@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "./mark-card.style.scss";
 
-const MarkCard = ({ markArray }) => {
+const MarkCard = ({ markArray, handleFavorite }) => {
   const [models, setModels] = useState([]);
   const [states, setStates] = useState([]);
   const [markID, markName] = markArray;
@@ -61,13 +61,12 @@ const MarkCard = ({ markArray }) => {
 
   const addToFavorite = () => {
     console.log("favorite data: ", carInfo);
+    handleFavorite(carInfo);
   };
 
   useEffect(() => {
     fetchModel(markID);
   }, [markID]);
-
-  console.log(carInfo);
 
   return (
     <div className="mark_card">
@@ -103,10 +102,12 @@ const MarkCard = ({ markArray }) => {
         placeholder="Price to"
         onChange={handlePrice}
       />
-      {carInfo.states.length ? (
-        <button className="add_favorite" onClick={addToFavorite}>
-          Add to favorite
-        </button>
+      {carInfo.states ? (
+        carInfo.states.length ? (
+          <button className="add_favorite" onClick={addToFavorite}>
+            Add to favorite
+          </button>
+        ) : null
       ) : null}
     </div>
   );

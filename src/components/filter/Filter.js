@@ -5,7 +5,7 @@ import MarkCard from "../mark-card/MarkCard";
 
 import "./filter.style.scss";
 
-const Filter = () => {
+const Filter = ({ handleFavorite }) => {
   const [marks, setMarks] = useState([]);
   const [inputMarks, setInputMarks] = useState([]);
   const [pickedMark, setPickedMark] = useState([]);
@@ -44,7 +44,9 @@ const Filter = () => {
       {inputMarks.length ? (
         <MarkList marks={inputMarks} pickMark={pickMark} />
       ) : null}
-      {pickedMark.length ? <MarkCard markArray={pickedMark} /> : null}
+      {pickedMark.length ? (
+        <MarkCard markArray={pickedMark} handleFavorite={handleFavorite} />
+      ) : null}
     </div>
   );
 };
