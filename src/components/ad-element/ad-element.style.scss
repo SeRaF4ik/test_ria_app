@@ -1,0 +1,96 @@
+.ad_element {
+  margin-top: 20px;
+  padding: 5px;
+  width: 90%;
+  margin-left: 5%;
+  border: 1px solid grey;
+  border-radius: 6px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  img {
+    width: 55%;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .head {
+    p {
+      font-weight: bold;
+      margin-bottom: 0;
+      margin-top: 5px;
+    }
+
+    .date {
+      width: 40%;
+      display: inline-block;
+    }
+
+    .price {
+      width: 30%;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .year {
+      width: 30%;
+      display: inline-block;
+      text-align: right;
+    }
+  }
+
+  .main {
+    margin-top: 10px;
+
+    .info {
+      height: 215px;
+      width: 44%;
+      display: inline-block;
+
+      h5 {
+        text-align: center;
+        font-size: 16px;
+        margin: 0;
+      }
+
+      p {
+        font-size: 13px;
+        font-weight: bold;
+        width: 90%;
+        margin-left: 5%;
+      }
+    }
+  }
+
+  .foot {
+    margin-top: 10px;
+
+    h5 {
+      font-size: 16px;
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .descr {
+      font-size: 13px;
+      text-align: justify;
+      margin: 0;
+    }
+  }
+
+  .loading {
+    img {
+      width: 10%;
+      margin-left: 45%;
+      border: none;
+    }
+    p {
+      text-align: center;
+    }
+  }
+}

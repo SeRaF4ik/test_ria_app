@@ -1,70 +1,66 @@
 import { useState, useEffect } from "react";
 
-import Filter from "./components/filter/Filter";
-import FavoriteList from "./components/favorite-list/FavoriteList";
-import AdFeed from "./components/ad-feed/AdFeed";
+import Filter from "./components/filter/filter.component";
+import AdFeed from "./components/ad-feed/ad-feed.component";
 
 import "./App.css";
 
 function App() {
-  const [favorites, setFavorites] = useState([]);
+  // const [filterInfo, setFilterInfo] = useState({
+  //   price_from: 0,
+  //   price_to: 0,
+  //   states: [],
+  //   cars: [],
+  // });
+  const [filterInfo, setFilterInfo] = useState(null);
 
-  // const fetchRia = () => {
-  //   fetch(
-  //     "https://developers.ria.com/auto/categories/1/marks?api_key=CSZCqn3KA6mjPoYwZtA3AgQBaDa3PJ7ga9fjODMH"
-  //   )
-  //     .then((response) => response.json())
-  //     .then((json) => console.log(json[106]));
-  // };
-
-  //category_id=1
-
-  useEffect(() => {
-    if (favorites.length) {
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-    } else {
-      const localFavorites = JSON.parse(localStorage.getItem("favorites"));
-      if (localFavorites.length) {
-        setFavorites(localFavorites);
-      }
-    }
-  }, [favorites]);
-
-  const handleFavorite = (carObject) => {
-    const checkFavorites = favorites.filter(
-      (favorite) => favorite.modelID === carObject.modelID
+  const handleFilterCar = (carObject) => {
+    const checkFilterCars = filterInfo.cars.filter(
+      (car) => car.modelID === carObject.modelID
     );
-    if (checkFavorites.length) {
-      alert("it's already in the favorite list!");
+    if (checkFilterCars.length) {
+      alert("it's already in the car list!");
       return false;
     }
-    setFavorites([...favorites, carObject]);
+    setFilterInfo({
+      ...filterInfo,
+      cars: [...filterInfo.cars, carObject],
+    });
   };
 
-  const handleDeleteFavorite = (modelID) => {
-    const newFavorites = favorites.filter(
-      (favorite) => favorite.modelID !== modelID
+  const deleteFilterCar = (modelID) => {
+    const newFilterCars = filterInfo.cars.filter(
+      (car) => car.modelID !== modelID
     );
-    setFavorites(newFavorites);
-    if (!newFavorites.length) {
-      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+    setFilterInfo({ ...filterInfo, cars: newFilterCars });
+    localStorage.setItem("filter_info", JSON.stringify(filterInfo));
+    if (!newFilterCars.length) {
+      let localFilterInfo = JSON.parse(localStorage.getItem("filter_info"));
+      localFilterInfo.cars = newFilterCars;
+      localStorage.setItem("filter_info", JSON.stringify(localFilterInfo));
     }
   };
 
-  console.log("favorites: ", favorites);
+  useEffect(() => {
+    if (filterInfo && filterInfo.cars.length) {
+      localStorage.setItem("filter_info", JSON.stringify(filterInfo));
+    } else {
+      const localFilterInfo = JSON.parse(localStorage.getItem("filter_info"));
+      if (localFilterInfo && !filterInfo) {
+        setFilterInfo(localFilterInfo);
+      }
+    }
+  }, [filterInfo]);
 
   return (
     <div className="App">
-      <div className="header">
-        {favorites ? (
-          <FavoriteList
-            favorites={favorites}
-            deleteFavorite={handleDeleteFavorite}
-          />
-        ) : null}
-      </div>
-      <AdFeed favorites={favorites} />
-      <Filter handleFavorite={handleFavorite} />
+      {filterInfo ? <AdFeed filterInfo={filterInfo} /> : null}
+      <Filter
+        filterInfo={filterInfo}
+        deleteFilterCar={deleteFilterCar}
+        handleFilterCar={handleFilterCar}
+        setFilterInfo={setFilterInfo}
+      />
     </div>
   );
 }
