@@ -1,27 +1,35 @@
 import React from "react";
 
+import { Grid, Chip, Box, Divider } from "@material-ui/core";
+import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
+import Alert from "@material-ui/lab/Alert";
+
 import "./selected-car-list.style.scss";
 
 const SelectedCarList = ({ filterInfo, deleteFilterCar }) => {
   return (
-    <div className="selected_cars">
-      <h4>SELECTED CARS</h4>
+    <Box className="selected_cars">
+      <h4>Выбранные авто</h4>
       {filterInfo.cars.length ? (
-        <div className="car_list">
+        <Grid container justifyContent="center" className="car_list">
           {filterInfo.cars.map((auto) => (
-            <div key={auto.modelID} className="car">
-              <h5>{auto.markName}</h5>
-              <p>{auto.modelName}</p>
-              <button onClick={() => deleteFilterCar(auto.modelID)}>
-                delete
-              </button>
-            </div>
+            <Grid key={auto.modelID} item xs={4} className="car">
+              <Chip
+                color="primary"
+                onDelete={() => deleteFilterCar(auto.modelID)}
+                label={auto.markName + " " + auto.modelName}
+                icon={<DirectionsCarIcon />}
+              />
+            </Grid>
           ))}
-        </div>
+        </Grid>
       ) : (
-        <p className="empty_cars">Empty selected cars!</p>
+        <Alert variant="filled" className="empty_cars" severity="error">
+          Список авто пуст!
+        </Alert>
       )}
-    </div>
+      <Divider />
+    </Box>
   );
 };
 

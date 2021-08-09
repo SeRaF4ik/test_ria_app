@@ -1,52 +1,12 @@
 .selected_cars {
-  border-bottom: 1px solid black;
-  padding-bottom: 5px;
-
-  h4 {
-    text-align: center;
-  }
-
   .car_list {
-    display: inline-block;
-    width: 100%;
-    vertical-align: top;
-
     .car {
-      display: inline-block;
-      width: 23%;
-      margin-left: 2%;
+      margin-bottom: 15px;
       text-align: center;
-      border: 1px solid grey;
-      border-radius: 5px;
-      height: 90px;
-      margin-top: 5px;
-      overflow-y: hidden;
-
-      &:first-child,
-      &:nth-child(4n + 1) {
-        margin-left: 0;
-      }
-
-      h5 {
-        text-align: center;
-        margin: 10px 0px 5px 0px;
-      }
-
-      p {
-        margin: 5px 0px;
-        font-size: 14px;
-      }
     }
   }
 
   .empty_cars {
-    padding: 5px;
-    border-radius: 5px;
-    border: 2px solid red;
-    text-align: center;
-    font-weight: bold;
-    width: 60%;
-    margin-left: 20%;
-    background-color: indianred;
+    margin-bottom: 15px;
   }
 }
