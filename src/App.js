@@ -6,13 +6,12 @@ import AdFeed from "./components/ad-feed/ad-feed.component";
 import "./App.css";
 
 function App() {
-  // const [filterInfo, setFilterInfo] = useState({
-  //   price_from: 0,
-  //   price_to: 0,
-  //   states: [],
-  //   cars: [],
-  // });
-  const [filterInfo, setFilterInfo] = useState(null);
+  const [filterInfo, setFilterInfo] = useState({
+    price_from: 0,
+    price_to: 0,
+    states: [],
+    cars: [],
+  });
 
   const handleFilterCar = (carObject) => {
     const checkFilterCars = filterInfo.cars.filter(
@@ -22,7 +21,7 @@ function App() {
       alert("it's already in the car list!");
       return false;
     }
-    setFilterInfo({
+    saveFilterInfo({
       ...filterInfo,
       cars: [...filterInfo.cars, carObject],
     });
@@ -32,34 +31,29 @@ function App() {
     const newFilterCars = filterInfo.cars.filter(
       (car) => car.modelID !== modelID
     );
-    setFilterInfo({ ...filterInfo, cars: newFilterCars });
-    localStorage.setItem("filter_info", JSON.stringify(filterInfo));
-    if (!newFilterCars.length) {
-      let localFilterInfo = JSON.parse(localStorage.getItem("filter_info"));
-      localFilterInfo.cars = newFilterCars;
-      localStorage.setItem("filter_info", JSON.stringify(localFilterInfo));
-    }
+    saveFilterInfo({ ...filterInfo, cars: newFilterCars });
+  };
+
+  const saveFilterInfo = (info) => {
+    setFilterInfo(info);
+    localStorage.setItem("filter_info", JSON.stringify(info));
   };
 
   useEffect(() => {
-    if (filterInfo && filterInfo.cars.length) {
-      localStorage.setItem("filter_info", JSON.stringify(filterInfo));
-    } else {
-      const localFilterInfo = JSON.parse(localStorage.getItem("filter_info"));
-      if (localFilterInfo && !filterInfo) {
-        setFilterInfo(localFilterInfo);
-      }
-    }
-  }, [filterInfo]);
+    const localFilterInfo = JSON.parse(localStorage.getItem("filter_info"));
+    if (localFilterInfo) setFilterInfo(localFilterInfo);
+  }, []);
+
+  console.log("render app", filterInfo);
 
   return (
     <div className="App">
-      {filterInfo ? <AdFeed filterInfo={filterInfo} /> : null}
+      <AdFeed filterInfo={filterInfo} />
       <Filter
         filterInfo={filterInfo}
         deleteFilterCar={deleteFilterCar}
         handleFilterCar={handleFilterCar}
-        setFilterInfo={setFilterInfo}
+        saveFilterInfo={saveFilterInfo}
       />
     </div>
   );

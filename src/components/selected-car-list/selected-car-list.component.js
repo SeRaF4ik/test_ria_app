@@ -6,7 +6,7 @@ const SelectedCarList = ({ filterInfo, deleteFilterCar }) => {
   return (
     <div className="selected_cars">
       <h4>SELECTED CARS</h4>
-      {filterInfo && filterInfo.cars.length ? (
+      {filterInfo.cars.length ? (
         <div className="car_list">
           {filterInfo.cars.map((auto) => (
             <div key={auto.modelID} className="car">

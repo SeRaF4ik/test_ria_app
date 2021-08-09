@@ -10,7 +10,7 @@ const Filter = ({
   handleFilterCar,
   filterInfo,
   deleteFilterCar,
-  setFilterInfo,
+  saveFilterInfo,
 }) => {
   const [states, setStates] = useState([]);
 
@@ -32,13 +32,11 @@ const Filter = ({
         deleteFilterCar={deleteFilterCar}
       />
       <SelectCar handleFilterCar={handleFilterCar} />
-      {filterInfo ? (
-        <FilterForm
-          filterInfo={filterInfo}
-          setFilterInfo={setFilterInfo}
-          states={states}
-        />
-      ) : null}
+      <FilterForm
+        filterInfo={filterInfo}
+        saveFilterInfo={saveFilterInfo}
+        states={states}
+      />
     </div>
   );
 };

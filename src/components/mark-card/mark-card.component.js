@@ -29,11 +29,6 @@ const MarkCard = ({ markArray, handleFilterCar }) => {
     });
   };
 
-  // const addToFavorite = () => {
-  //   console.log("favorite data: ", carInfo);
-  //   handleFilterCar(carInfo);
-  // };
-
   useEffect(() => {
     fetchModel(markID);
   }, [markID]);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./filter-form.style.scss";
 
-const FilterForm = ({ filterInfo, setFilterInfo, states }) => {
+const FilterForm = ({ filterInfo, saveFilterInfo, states }) => {
   const [formParams, setFormParams] = useState({});
 
   const handlePrice = (event) => {
@@ -23,7 +23,7 @@ const FilterForm = ({ filterInfo, setFilterInfo, states }) => {
   const saveForm = (event) => {
     event.preventDefault();
 
-    setFilterInfo({
+    saveFilterInfo({
       ...filterInfo,
       ...formParams,
     });
