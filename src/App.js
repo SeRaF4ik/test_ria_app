@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Filter from "./components/filter/filter.component";
 import AdFeed from "./components/ad-feed/ad-feed.component";
 
+import { Container, Grid, Divider } from "@material-ui/core";
+
 import "./App.css";
 
 function App() {
@@ -47,15 +49,24 @@ function App() {
   console.log("render app", filterInfo);
 
   return (
-    <div className="App">
-      <AdFeed filterInfo={filterInfo} />
-      <Filter
-        filterInfo={filterInfo}
-        deleteFilterCar={deleteFilterCar}
-        handleFilterCar={handleFilterCar}
-        saveFilterInfo={saveFilterInfo}
-      />
-    </div>
+    <Container className="App">
+      <Grid container spacing={0}>
+        <Grid item xs={6}>
+          <AdFeed filterInfo={filterInfo} />
+        </Grid>
+        <Grid item xs={true}>
+          <Divider orientation="vertical" />
+        </Grid>
+        <Grid item xs={5}>
+          <Filter
+            filterInfo={filterInfo}
+            deleteFilterCar={deleteFilterCar}
+            handleFilterCar={handleFilterCar}
+            saveFilterInfo={saveFilterInfo}
+          />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 

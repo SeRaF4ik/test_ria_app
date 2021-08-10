@@ -10,7 +10,7 @@ const AdFeed = ({ filterInfo }) => {
   useEffect(() => {
     const checkAds = (filterInfo) => {
       let params =
-        "&category_id=1&bodystyle[0]=2&bodystyle[1]=4&currency=1&countpage=10";
+        "&category_id=1&bodystyle[0]=2&bodystyle[1]=4&currency=1&countpage=2";
       params += filterInfo.price_from
         ? `&price_ot=${filterInfo.price_from}`
         : `&price_ot=0`;
