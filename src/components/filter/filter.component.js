@@ -4,6 +4,8 @@ import SelectedCarList from "../selected-car-list/selected-car-list.component";
 import SelectCar from "../select-car/select-car.component";
 import FilterForm from "../filter-form/filter-form.component";
 
+import { Grid } from "@material-ui/core";
+
 import "./filter.style.scss";
 
 const Filter = ({
@@ -25,19 +27,27 @@ const Filter = ({
   }, []);
 
   return (
-    <div className="filter">
-      <h4>FILTER</h4>
-      <SelectedCarList
-        filterInfo={filterInfo}
-        deleteFilterCar={deleteFilterCar}
-      />
-      <SelectCar handleFilterCar={handleFilterCar} />
-      <FilterForm
-        filterInfo={filterInfo}
-        saveFilterInfo={saveFilterInfo}
-        states={states}
-      />
-    </div>
+    <Grid container spacing={0} className="filter">
+      <Grid item xs={12}>
+        <h4>Фильтр</h4>
+      </Grid>
+      <Grid item xs={12}>
+        <SelectedCarList
+          filterInfo={filterInfo}
+          deleteFilterCar={deleteFilterCar}
+        />
+      </Grid>
+      <Grid item xs={6}>
+        <SelectCar handleFilterCar={handleFilterCar} />
+      </Grid>
+      <Grid item xs={6}>
+        <FilterForm
+          filterInfo={filterInfo}
+          saveFilterInfo={saveFilterInfo}
+          states={states}
+        />
+      </Grid>
+    </Grid>
   );
 };
 

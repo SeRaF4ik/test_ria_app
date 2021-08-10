@@ -1,14 +1,9 @@
 .select_car {
-  display: inline-block;
-  width: 50%;
-  vertical-align: top;
-  margin-top: 20px;
+  .search_mark {
+    margin-top: 15px;
+  }
 
-  input {
-    padding: 5px;
-    width: 80%;
-    margin-left: 10%;
-    height: 20px;
-    border-radius: 5px;
+  .search_model {
+    margin-top: 15px;
   }
 }
