@@ -1,50 +1,12 @@
 .other_params {
-  margin-top: 20px;
+  margin-top: 15px;
   vertical-align: top;
 
-  .states {
-    margin-top: 5px;
-
-    select {
-      width: 80%;
-      margin-left: 10%;
-      min-height: 80px;
-    }
-
-    label {
-      width: 80%;
-      margin-left: 10%;
-    }
-  }
-
   .price {
-    margin-top: 5px;
-
-    label {
-      font-size: 12px;
-      font-weight: bold;
-      margin-left: 10%;
-      width: 40%;
-      display: inline-block;
-    }
-
-    input {
-      width: 36%;
-      display: inline-block;
-    }
+    margin-top: 15px;
   }
 
   .save_params {
-    width: 80%;
-    margin-left: 10%;
-    padding: 5px;
     margin-top: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid black;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 }
