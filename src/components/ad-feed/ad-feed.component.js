@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+import { Grid } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
+
 import AdElement from "../ad-element/ad-element.component";
 
 import "./ad-feed.style.scss";
@@ -42,16 +45,22 @@ const AdFeed = ({ filterInfo }) => {
   }, [filterInfo]);
 
   return (
-    <div className="ad_feed">
-      <h4>AD FEED</h4>
-      {ads.length && filterInfo.cars.length ? (
-        ads.map((ad) => <AdElement key={ad} adID={ad} />)
-      ) : !ads.length && filterInfo.cars.length ? (
-        <p className="empty_cars">No ads for this filter!</p>
-      ) : (
-        <p className="empty_cars">No cars selected for filter!</p>
-      )}
-    </div>
+    <Grid container justifyContent="center" className="ad_feed">
+      <h4>Лента объявлений</h4>
+      <Grid item xs={10}>
+        {ads.length && filterInfo.cars.length ? (
+          ads.map((ad) => <AdElement key={ad} adID={ad} />)
+        ) : !ads.length && filterInfo.cars.length ? (
+          <Alert variant="filled" className="ads_error" severity="error">
+            Нет объявлений под этот фильтр!
+          </Alert>
+        ) : (
+          <Alert variant="filled" className="ads_error" severity="error">
+            Список авто пуст!
+          </Alert>
+        )}
+      </Grid>
+    </Grid>
   );
 };
 
