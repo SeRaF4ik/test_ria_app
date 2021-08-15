@@ -119,53 +119,6 @@ const FilterForm = ({ filterInfo, saveFilterInfo, states }) => {
         </form>
       </Grid>
     </Grid>
-    // <div className="other_params">
-    //   <form onSubmit={saveForm}>
-    //     {states.length ? (
-    //       <div className="states">
-    //         <label htmlFor="states">Pick a state</label>
-    //         <select
-    //           multiple
-    //           id="states"
-    //           name="states"
-    //           defaultValue={formParams.states.map((state) => state[1])}
-    //           onChange={pickedStates}
-    //         >
-    //           {states.map((state) => (
-    //             <option key={state.value} value={state.value}>
-    //               {state.name}
-    //             </option>
-    //           ))}
-    //         </select>
-    //       </div>
-    //     ) : null}
-    //     <div className="price">
-    //       <label htmlFor="price_from">Price from $</label>
-    //       <input
-    //         type="number"
-    //         id="price_from"
-    //         name="price_from"
-    //         placeholder="Price from"
-    //         value={formParams.price_from ? formParams.price_from : 0}
-    //         onChange={handlePrice}
-    //       />
-    //     </div>
-    //     <div className="price">
-    //       <label htmlFor="price_to">Price to $</label>
-    //       <input
-    //         type="number"
-    //         id="price_to"
-    //         name="price_to"
-    //         placeholder="Price to"
-    //         value={formParams.price_to ? formParams.price_to : 0}
-    //         onChange={handlePrice}
-    //       />
-    //     </div>
-    //     <button className="save_params" type="submit">
-    //       Save params
-    //     </button>
-    //   </form>
-    // </div>
   );
 };
 

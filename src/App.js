@@ -3,7 +3,17 @@ import { useState, useEffect } from "react";
 import Filter from "./components/filter/filter.component";
 import AdFeed from "./components/ad-feed/ad-feed.component";
 
-import { Container, Grid, Divider } from "@material-ui/core";
+import {
+  Container,
+  Grid,
+  Divider,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  DialogContentText,
+  Button,
+} from "@material-ui/core";
 
 import "./App.css";
 
@@ -14,13 +24,22 @@ function App() {
     states: [],
     cars: [],
   });
+  const [dialogData, setDialogData] = useState({
+    open: false,
+    title: null,
+    text: null,
+  });
 
   const handleFilterCar = (carObject) => {
     const checkFilterCars = filterInfo.cars.filter(
       (car) => car.modelID === carObject.modelID
     );
     if (checkFilterCars.length) {
-      alert("it's already in the car list!");
+      setDialogData({
+        open: true,
+        title: "Ошибка",
+        text: "Данная модель авто уже добавлена в фильтр!",
+      });
       return false;
     }
     saveFilterInfo({
@@ -66,6 +85,25 @@ function App() {
           />
         </Grid>
       </Grid>
+      <Dialog
+        open={dialogData.open}
+        onClose={() => setDialogData({ open: false, title: null, text: null })}
+      >
+        <DialogTitle>{dialogData.title}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>{dialogData.text}</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() =>
+              setDialogData({ open: false, title: null, text: null })
+            }
+            color="primary"
+          >
+            Закрыть
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }
