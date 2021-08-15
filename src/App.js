@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import Filter from "./components/filter/filter.component";
 import AdFeed from "./components/ad-feed/ad-feed.component";
+import Header from "./components/header/header.component";
 
 import {
   Container,
@@ -60,16 +61,25 @@ function App() {
     localStorage.setItem("filter_info", JSON.stringify(info));
   };
 
+  const getHelpInfo = () => {
+    setDialogData({
+      open: true,
+      title: "Информация о приложении",
+      text: "Тестовое приложение, работающее на AUTO.RIA API. Поиск объявлений происходит исключительно среди легковых авто, с типом кузова хэтчбэк/универсал.",
+    });
+  };
+
   useEffect(() => {
     const localFilterInfo = JSON.parse(localStorage.getItem("filter_info"));
     if (localFilterInfo) setFilterInfo(localFilterInfo);
   }, []);
 
-  console.log("render app", filterInfo);
-
   return (
     <Container className="App">
       <Grid container spacing={0}>
+        <Grid item xs={12}>
+          <Header getHelpInfo={getHelpInfo} />
+        </Grid>
         <Grid item xs={6}>
           <AdFeed filterInfo={filterInfo} />
         </Grid>
