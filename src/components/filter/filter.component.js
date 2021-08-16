@@ -37,10 +37,10 @@ const Filter = ({
           deleteFilterCar={deleteFilterCar}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} lg={6}>
         <SelectCar handleFilterCar={handleFilterCar} />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} lg={6}>
         <FilterForm
           filterInfo={filterInfo}
           saveFilterInfo={saveFilterInfo}

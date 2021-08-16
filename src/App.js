@@ -14,6 +14,8 @@ import {
   DialogTitle,
   DialogContentText,
   Button,
+  Hidden,
+  Box,
 } from "@material-ui/core";
 
 import "./App.css";
@@ -75,25 +77,41 @@ function App() {
   }, []);
 
   return (
-    <Container className="App">
+    <Container maxWidth="xl" className="App">
       <Grid container spacing={0}>
         <Grid item xs={12}>
           <Header getHelpInfo={getHelpInfo} />
         </Grid>
-        <Grid item xs={6}>
+        <Hidden smUp>
+          <Grid item xs={12}>
+            <Box className="mobile_filter" boxShadow={10}>
+              <Filter
+                filterInfo={filterInfo}
+                deleteFilterCar={deleteFilterCar}
+                handleFilterCar={handleFilterCar}
+                saveFilterInfo={saveFilterInfo}
+              />
+            </Box>
+          </Grid>
+        </Hidden>
+        <Grid item xs={12} sm={6}>
           <AdFeed filterInfo={filterInfo} />
         </Grid>
-        <Grid item xs={true}>
-          <Divider orientation="vertical" />
-        </Grid>
-        <Grid item xs={5}>
-          <Filter
-            filterInfo={filterInfo}
-            deleteFilterCar={deleteFilterCar}
-            handleFilterCar={handleFilterCar}
-            saveFilterInfo={saveFilterInfo}
-          />
-        </Grid>
+        <Hidden only="xs">
+          <Grid item sm={true}>
+            <Divider orientation="vertical" />
+          </Grid>
+        </Hidden>
+        <Hidden only="xs">
+          <Grid item sm={5}>
+            <Filter
+              filterInfo={filterInfo}
+              deleteFilterCar={deleteFilterCar}
+              handleFilterCar={handleFilterCar}
+              saveFilterInfo={saveFilterInfo}
+            />
+          </Grid>
+        </Hidden>
       </Grid>
       <Dialog
         open={dialogData.open}

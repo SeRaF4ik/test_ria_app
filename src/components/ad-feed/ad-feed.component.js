@@ -36,7 +36,8 @@ const AdFeed = ({ filterInfo }) => {
         `https://seraf4ik.com.ua/ria/send_req.php?link=/search${params}&type=search`
       )
         .then((response) => response.json())
-        .then((json) => setAds(json.result.search_result.ids));
+        .then((json) => setAds(json.result.search_result.ids))
+        .catch((error) => console.log("error ads: ", error));
     };
 
     if (filterInfo.cars.length) {
@@ -47,7 +48,7 @@ const AdFeed = ({ filterInfo }) => {
   return (
     <Grid container justifyContent="center" className="ad_feed">
       <h4>Лента объявлений</h4>
-      <Grid item xs={10}>
+      <Grid item xs={12} sm={10}>
         {ads.length && filterInfo.cars.length ? (
           ads.map((ad) => <AdElement key={ad} adID={ad} />)
         ) : !ads.length && filterInfo.cars.length ? (

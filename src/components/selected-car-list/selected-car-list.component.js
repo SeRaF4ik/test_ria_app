@@ -13,7 +13,15 @@ const SelectedCarList = ({ filterInfo, deleteFilterCar }) => {
       {filterInfo.cars.length ? (
         <Grid container justifyContent="center" className="car_list">
           {filterInfo.cars.map((auto) => (
-            <Grid key={auto.modelID} item xs={4} className="car">
+            <Grid
+              key={auto.modelID}
+              item
+              xs={12}
+              sm={6}
+              lg={4}
+              xl={3}
+              className="car"
+            >
               <Chip
                 color="primary"
                 onDelete={() => deleteFilterCar(auto.modelID)}
