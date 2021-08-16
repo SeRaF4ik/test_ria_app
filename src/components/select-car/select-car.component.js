@@ -38,7 +38,8 @@ const SelectCar = ({ handleFilterCar }) => {
         "https://seraf4ik.com.ua/ria/send_req.php?link=/categories/1/marks&type=filter"
       )
         .then((response) => response.json())
-        .then((json) => setMarks(json));
+        .then((json) => setMarks(json))
+        .catch((error) => console.log("marks error: ", error));
     };
 
     fetchMarks();
@@ -50,7 +51,8 @@ const SelectCar = ({ handleFilterCar }) => {
         `https://seraf4ik.com.ua/ria/send_req.php?link=/categories/1/marks/${carInfo.markID}/models&type=filter`
       )
         .then((response) => response.json())
-        .then((models) => setModels(models));
+        .then((models) => setModels(models))
+        .catch((error) => console.log("models error: ", error));
     };
 
     if (carInfo.markID) {

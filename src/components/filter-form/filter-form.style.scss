@@ -8,5 +8,35 @@
 
   .save_params {
     margin-top: 15px;
+
+    &:not([disabled]) {
+      animation: pulse 2s infinite;
+
+      @-webkit-keyframes pulse {
+        0% {
+          -webkit-box-shadow: 0 0 0 0 #3f51b5;
+        }
+        70% {
+          -webkit-box-shadow: 0 0 0 10px #fff;
+        }
+        100% {
+          -webkit-box-shadow: 0 0 0 0 #fff;
+        }
+      }
+      @keyframes pulse {
+        0% {
+          -moz-box-shadow: 0 0 0 0 #3f51b5;
+          box-shadow: 0 0 0 0 #3f51b5;
+        }
+        70% {
+          -moz-box-shadow: 0 0 0 10px #fff;
+          box-shadow: 0 0 0 10px #fff;
+        }
+        100% {
+          -moz-box-shadow: 0 0 0 0 #fff;
+          box-shadow: 0 0 0 0 #fff;
+        }
+      }
+    }
   }
 }

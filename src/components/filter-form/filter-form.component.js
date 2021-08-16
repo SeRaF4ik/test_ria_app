@@ -21,10 +21,12 @@ const FilterForm = ({ filterInfo, saveFilterInfo, states }) => {
     price_from: 0,
     price_to: 0,
   });
+  const [disabledButton, setDisabledButton] = useState(true);
 
   const handlePrice = (event) => {
     const { name, value } = event.target;
     setFormParams({ ...formParams, [name]: value ? parseInt(value, 10) : 0 });
+    setDisabledButton(false);
   };
 
   const pickedStates = (event) => {
@@ -35,6 +37,7 @@ const FilterForm = ({ filterInfo, saveFilterInfo, states }) => {
       .map((state) => [state.name, state.value]);
 
     setFormParams({ ...formParams, states: selectedStates });
+    setDisabledButton(false);
   };
 
   const saveForm = (event) => {
@@ -44,6 +47,7 @@ const FilterForm = ({ filterInfo, saveFilterInfo, states }) => {
       ...filterInfo,
       ...formParams,
     });
+    setDisabledButton(true);
   };
 
   useEffect(() => {
@@ -113,6 +117,7 @@ const FilterForm = ({ filterInfo, saveFilterInfo, states }) => {
             endIcon={<SaveIcon />}
             fullWidth
             type="submit"
+            disabled={disabledButton}
           >
             Сохранить
           </Button>

@@ -20,7 +20,8 @@ const Filter = ({
     const fetchStates = () => {
       fetch("https://seraf4ik.com.ua/ria/send_req.php?link=/states&type=filter")
         .then((response) => response.json())
-        .then((json) => setStates(json));
+        .then((json) => setStates(json))
+        .catch((error) => console.log("error states: ", error));
     };
 
     fetchStates();
