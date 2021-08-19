@@ -3,12 +3,16 @@ import React, { useState, useEffect } from "react";
 import { Grid, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 
+import { marksArray } from "./marks";
+
 import "./select-car.style.scss";
 
 const SelectCar = ({ handleFilterCar }) => {
-  const [marks, setMarks] = useState([]);
+  // const [marks, setMarks] = useState([]);
   const [models, setModels] = useState([]);
   const [carInfo, setCarInfo] = useState({});
+
+  const marks = marksArray;
 
   const chooseMark = (choosenMark) => {
     if (choosenMark !== null) {
@@ -32,18 +36,18 @@ const SelectCar = ({ handleFilterCar }) => {
     }
   };
 
-  useEffect(() => {
-    const fetchMarks = () => {
-      fetch(
-        "https://seraf4ik.com.ua/ria/send_req.php?link=/categories/1/marks&type=filter"
-      )
-        .then((response) => response.json())
-        .then((json) => setMarks(json))
-        .catch((error) => console.log("marks error: ", error));
-    };
+  // useEffect(() => {
+  //   const fetchMarks = () => {
+  //     fetch(
+  //       "https://seraf4ik.com.ua/ria/send_req.php?link=/categories/1/marks&type=filter"
+  //     )
+  //       .then((response) => response.json())
+  //       .then((json) => setMarks(json))
+  //       .catch((error) => console.log("marks error: ", error));
+  //   };
 
-    fetchMarks();
-  }, []);
+  //   fetchMarks();
+  // }, []);
 
   useEffect(() => {
     const fetchModel = () => {
