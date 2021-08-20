@@ -16,7 +16,7 @@ const AdFeed = ({ filterInfo }) => {
     const checkAds = (filterInfo) => {
       setIsLoading(true);
       let params =
-        "&category_id=1&bodystyle[0]=2&bodystyle[1]=4&currency=1&countpage=2";
+        "&category_id=1&bodystyle[0]=2&bodystyle[1]=4&currency=1&countpage=10";
       params += filterInfo.price_from
         ? `&price_ot=${filterInfo.price_from}`
         : `&price_ot=0`;

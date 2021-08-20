@@ -8,7 +8,6 @@ import { marksArray } from "./marks";
 import "./select-car.style.scss";
 
 const SelectCar = ({ handleFilterCar }) => {
-  // const [marks, setMarks] = useState([]);
   const [models, setModels] = useState([]);
   const [carInfo, setCarInfo] = useState({});
 
@@ -19,6 +18,7 @@ const SelectCar = ({ handleFilterCar }) => {
       const pickedMark = marks.filter((mark) => mark.name === choosenMark);
       const { name, value } = pickedMark[0];
       setCarInfo({ markID: value, markName: name });
+      setModels([]);
     } else {
       setModels([]);
     }
@@ -35,19 +35,6 @@ const SelectCar = ({ handleFilterCar }) => {
       });
     }
   };
-
-  // useEffect(() => {
-  //   const fetchMarks = () => {
-  //     fetch(
-  //       "https://seraf4ik.com.ua/ria/send_req.php?link=/categories/1/marks&type=filter"
-  //     )
-  //       .then((response) => response.json())
-  //       .then((json) => setMarks(json))
-  //       .catch((error) => console.log("marks error: ", error));
-  //   };
-
-  //   fetchMarks();
-  // }, []);
 
   useEffect(() => {
     const fetchModel = () => {
