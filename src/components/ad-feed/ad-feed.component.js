@@ -92,7 +92,7 @@ const AdFeed = ({ filterInfo }) => {
           <Grid className="loading">
             <CircularProgress size={60} />
           </Grid>
-        ) : adsFullInfo.length ? (
+        ) : adsFullInfo.length && filterInfo.cars.length ? (
           adsFullInfo.map((adInfo, key) => (
             <AdElement key={key} adInfo={adInfo} />
           ))
