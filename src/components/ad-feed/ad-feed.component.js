@@ -41,7 +41,12 @@ const AdFeed = ({ filterInfo }) => {
         .then((response) => response.json())
         .then(
           (json) => {
-            setAds(json.result.search_result.ids);
+            if (json.result.search_result.count > 0) {
+              setAds(json.result.search_result.ids);
+            } else {
+              setAds([]);
+              setIsLoading(false);
+            }
           },
           (error) => {
             setIsLoading(false);
@@ -80,7 +85,6 @@ const AdFeed = ({ filterInfo }) => {
       fetchAdInfo();
     } else {
       setAdsFullInfo([]);
-      setIsLoading(false);
     }
   }, [ads]);
 

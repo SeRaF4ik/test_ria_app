@@ -8,7 +8,7 @@ import "./header.style.scss";
 const Header = ({ getHelpInfo }) => (
   <AppBar position="static" className="header">
     <Toolbar>
-      <Typography variant="h6">Test Ria App</Typography>
+      <Typography variant="h6">Ria App</Typography>
       <Button
         variant="outlined"
         color="inherit"
