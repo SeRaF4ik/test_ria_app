@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import RiaApi from "../../utils/riaApi";
 
 import { Grid, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
@@ -37,17 +38,16 @@ const SelectCar = ({ handleFilterCar }) => {
   };
 
   useEffect(() => {
-    const fetchModel = () => {
-      fetch(
-        `https://seraf4ik.com.ua/ria/send_req.php?link=/categories/1/marks/${carInfo.markID}/models&type=filter`
-      )
-        .then((response) => response.json())
-        .then((models) => setModels(models))
-        .catch((error) => console.log("models error: ", error));
-    };
+    const api = new RiaApi();
 
     if (carInfo.markID) {
-      fetchModel();
+      api.fetchModel(carInfo.markID).then((json) => {
+        if (json.error) {
+          console.error(json.error);
+        } else {
+          setModels(json);
+        }
+      });
     }
   }, [carInfo.markID]);
 
