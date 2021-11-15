@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ria_app/static/css/main.e992b9c8.chunk.css",
+    "main.js": "/ria_app/static/js/main.8fcb0e20.chunk.js",
+    "main.js.map": "/ria_app/static/js/main.8fcb0e20.chunk.js.map",
+    "runtime-main.js": "/ria_app/static/js/runtime-main.a62376d4.js",
+    "runtime-main.js.map": "/ria_app/static/js/runtime-main.a62376d4.js.map",
+    "static/js/2.c1ecd05b.chunk.js": "/ria_app/static/js/2.c1ecd05b.chunk.js",
+    "static/js/2.c1ecd05b.chunk.js.map": "/ria_app/static/js/2.c1ecd05b.chunk.js.map",
+    "index.html": "/ria_app/index.html",
+    "static/css/main.e992b9c8.chunk.css.map": "/ria_app/static/css/main.e992b9c8.chunk.css.map",
+    "static/js/2.c1ecd05b.chunk.js.LICENSE.txt": "/ria_app/static/js/2.c1ecd05b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a62376d4.js",
+    "static/js/2.c1ecd05b.chunk.js",
+    "static/css/main.e992b9c8.chunk.css",
+    "static/js/main.8fcb0e20.chunk.js"
+  ]
+}
